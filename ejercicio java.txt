@@ -1,0 +1,39 @@
+public class Solution {
+    public static  double valorMedia(List<Integer>tokens, int cantidad){
+        double result = 0;
+        //int tamano= tokens.get(0);
+        for(int i =0; i < cantidad; i++){
+            result= tokens.get(i)+ result;
+        }
+        result = result/cantidad;
+        return result;
+    }
+    public static double valorMediana(List<Integer>tokens,int cantidad){
+        double result = 0;
+        int tamano = cantidad;
+        Collections.sort(tokens);
+        if(tamano%2==0){
+               
+            tamano=tamano/2;
+            result=(tokens.get(tamano-1)+tokens.get(tamano))/2;
+        }else{
+           result=tokens.get(tamano); 
+        }
+        
+        return result;
+    }
+    
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        List<Integer> tokens = new ArrayList<Integer>();
+        Scanner scanner = new Scanner(System.in);
+            int cantidad = scanner.nextInt();
+        while (scanner.hasNextInt()) {
+            tokens.add(scanner.nextInt());
+        }
+        scanner.close();
+        System.out.println(valorMedia(tokens, cantidad));
+        System.out.println(valorMediana(tokens, cantidad));
+    }
+        
+}
